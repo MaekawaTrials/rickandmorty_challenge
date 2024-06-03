@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
-
-
 @NgModule({
   declarations: [
     FavoritesPageComponent
@@ -15,4 +12,4 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule
   ]
 })
-export class FavoritesModule { }
+export class FavoritesModule {}

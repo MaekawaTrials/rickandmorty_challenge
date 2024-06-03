@@ -18,4 +18,4 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule
   ]
 })
-export class HomeModule { }
+export class HomeModule {}
