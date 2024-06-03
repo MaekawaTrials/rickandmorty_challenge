@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { CharacterCardComponent } from './character-card/character-card.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,13 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     MatIconModule,
     MatBadgeModule
   ],
-  declarations: [MenuBarComponent],
-  exports: [MenuBarComponent]
+  declarations: [
+    MenuBarComponent,
+    CharacterCardComponent
+  ],
+  exports:  [
+    MenuBarComponent,
+    CharacterCardComponent
+  ]
 })
 export class SharedModule {}
