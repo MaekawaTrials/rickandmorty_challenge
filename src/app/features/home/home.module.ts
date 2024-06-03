@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { CharacterCardComponent } from './character-card/character-card.component';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { CharacterCardComponent } from './character-card/character-card.componen
     CharacterCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class HomeModule { }
