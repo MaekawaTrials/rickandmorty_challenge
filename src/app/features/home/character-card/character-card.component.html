@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ character.name }}</mat-card-title>
+      <mat-card-subtitle>{{ character.species }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="character.image" alt="{{ character.name }}">
+    <mat-card-content>
+      <p>Status: {{ character.status }}</p>
+      <p>Gênero: {{ character.gender }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button *ngIf="!isFavorite; else removeButton" (click)="addToFavorites()">Add to Favorites</button>
+      <ng-template #removeButton>
+        <button mat-button (click)="removeFromFavorites()">Remove from Favorites</button>
+      </ng-template>
+    </mat-card-actions>
+  </mat-card>
+  
