@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './features/home/home.module';
 import { FavoritesModule } from './features/favorites/favorites.module';
 import { SharedModule } from './shared/shared.module';
+import { StateModule } from './state/state.module';
+
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './state';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,9 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     HomeModule,
     FavoritesModule,
-    SharedModule
+    SharedModule,
+    StateModule,
+    StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent]
