@@ -1,8 +1,9 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromFavorites from './favorites.reducer';
+import { Character } from './character.model';
 
 export interface AppState {
-  favorites: fromFavorites.Character[];
+  favorites: Character[];
 }
 
 export const reducers: ActionReducerMap<AppState> = {
