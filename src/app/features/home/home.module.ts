@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class HomeModule { }
