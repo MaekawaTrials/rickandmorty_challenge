@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule, MatCard, MatCardHeader } from '@angular/material/card';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { CharacterCardComponent } from './character-card/character-card.component';
 
@@ -21,7 +21,7 @@ import { CharacterCardComponent } from './character-card/character-card.componen
     MenuBarComponent,
     CharacterCardComponent
   ],
-  exports:  [
+  exports: [
     MenuBarComponent,
     CharacterCardComponent
   ]
