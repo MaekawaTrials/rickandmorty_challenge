@@ -11,6 +11,6 @@
   <button mat-button routerLink="/favorites">
     <mat-icon>favorite</mat-icon>
     Favoritos
-    <span *ngIf="counter$ | async as counter" matBadge="{{ counter }}" matBadgeColor="accent"></span>
+    <span *ngIf="(counter$ | async) !== null">{{ counter$ | async }}</span>
   </button>
 </mat-toolbar>
