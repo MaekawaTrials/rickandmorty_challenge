@@ -7,6 +7,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { CharacterCardComponent } from './character-card/character-card.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { CharacterCardComponent } from './character-card/character-card.componen
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,
-    MatCardModule
+    MatCardModule,
+    RouterModule
   ],
   declarations: [
     MenuBarComponent,
