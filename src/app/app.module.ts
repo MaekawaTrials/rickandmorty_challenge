@@ -7,8 +7,10 @@ import { HomeModule } from './features/home/home.module';
 import { FavoritesModule } from './features/favorites/favorites.module';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './state';
 import { HttpClientModule } from '@angular/common/http';
+import { FavoritesEffects } from './state/favorites.effects';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     FavoritesModule,
     SharedModule,
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([FavoritesEffects]),
     HttpClientModule
   ],
   providers: [],

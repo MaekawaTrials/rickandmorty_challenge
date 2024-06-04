@@ -1,19 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
-import { addFavorite, removeFavorite } from './favorites.actions';
+import { addFavorite, removeFavorite, setFavorites } from './favorites.actions';
 import { Character } from './character.model';
 
 export const initialState: Character[] = [];
 
 const _favoritesReducer = createReducer(
   initialState,
-  on(addFavorite, (state, { character }) => {
-    return [...state, character];
-  }),
-  on(removeFavorite, (state, { id }) => {
-    return state.filter(character => character.id !== id);
-  })
+  on(addFavorite, (state, { character }) => [...state, character]),
+  on(removeFavorite, (state, { id }) => state.filter(character => character.id !== id)),
+  on(setFavorites, (state, { favorites }) => favorites)
 );
 
-export function favoritesReducer(state: any, action: any) {
+export function favoritesReducer(state: Character[] | undefined, action: any) {
   return _favoritesReducer(state, action);
 }
