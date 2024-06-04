@@ -10,14 +10,18 @@ export const reducers: ActionReducerMap<AppState> = {
   favorites: fromFavorites.favoritesReducer
 };
 
-export const selectFavoritesState = createFeatureSelector<AppState>('favorites');
+export const selectFavoritesState = createFeatureSelector<Character[]>('favorites');
 
 export const selectAllFavorites = createSelector(
   selectFavoritesState,
-  (state: AppState) => state.favorites || []
+  (favorites) => {
+    return favorites || [];
+  }
 );
 
 export const selectFavoritesCount = createSelector(
   selectAllFavorites,
-  (favorites: Character[]) => favorites.length
+  (favorites: Character[]) => {
+    return favorites.length;
+  }
 );

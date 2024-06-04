@@ -6,8 +6,12 @@ export const initialState: Character[] = [];
 
 const _favoritesReducer = createReducer(
   initialState,
-  on(addFavorite, (state, { character }) => [...state, character]),
-  on(removeFavorite, (state, { id }) => state.filter(character => character.id !== id))
+  on(addFavorite, (state, { character }) => {
+    return [...state, character];
+  }),
+  on(removeFavorite, (state, { id }) => {
+    return state.filter(character => character.id !== id);
+  })
 );
 
 export function favoritesReducer(state: any, action: any) {
