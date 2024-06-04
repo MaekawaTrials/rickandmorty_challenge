@@ -15,6 +15,6 @@ export class SearchBoxComponent {
     this.search.emit(term);
     setTimeout(() => {
       this.searchInput.nativeElement.blur();
-    }, 1000);
+    }, 2000);
   }
 }
