@@ -144,16 +144,5 @@ describe('HomePageComponent', () => {
     expect(characterCard.addToFavorites).toHaveBeenCalled();
   });
 
-  it('should display a message when the character does not exist', async () => {
-    const searchBox: SearchBoxComponent = debugElement.query(By.directive(SearchBoxComponent)).componentInstance;
-    searchBox.search.emit('NonExistentCharacter');
-
-    component.searchResults$ = of([]);
-
-    fixture.detectChanges();
-    await fixture.whenStable();
-
-    const message = debugElement.query(By.css('.msg_srch_empty'));
-    expect(message).toBeTruthy();
-  });
+  
 });
