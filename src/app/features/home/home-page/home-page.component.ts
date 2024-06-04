@@ -28,7 +28,7 @@ export class HomePageComponent {
 
   constructor(private http: HttpClient, private store: Store<AppState>) {
     this.favorites$ = this.store.pipe(select(selectAllFavorites));
-
+    
     this.searchResults$ = this.searchTerm$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -41,17 +41,16 @@ export class HomePageComponent {
       }, { cache: {}, current: [], term: '' } as SearchState),
       switchMap(state => {
         if (state.current.length > 0) {
-          return of(state);
+          return of(state.current);
         }
         return this.searchCharacters(state.term).pipe(
           map(results => {
             state.cache[state.term] = results;
-            return { ...state, current: results };
+            return results;
           }),
-          catchError(() => of({ ...state, current: [] }))  // Garantir que continuamos após erro
+          catchError(() => of([]))
         );
       }),
-      map(state => state.current),  // Adicionando este mapeamento para retornar apenas os resultados da pesquisa
       catchError(() => of([])),
       shareReplay(1)
     );
