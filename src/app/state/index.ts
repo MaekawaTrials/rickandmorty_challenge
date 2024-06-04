@@ -14,10 +14,10 @@ export const selectFavoritesState = createFeatureSelector<AppState>('favorites')
 
 export const selectAllFavorites = createSelector(
   selectFavoritesState,
-  (state: AppState) => state.favorites
+  (state: AppState) => state.favorites || []
 );
 
 export const selectFavoritesCount = createSelector(
-  selectFavoritesState,
-  (state: AppState) => state.favorites.length
+  selectAllFavorites,
+  (favorites: Character[]) => favorites.length
 );
