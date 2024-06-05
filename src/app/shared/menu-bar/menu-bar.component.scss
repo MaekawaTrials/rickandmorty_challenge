@@ -1,1 +1,127 @@
-.spacer { flex: 1 1 auto; }
+
+@import '../../../styles/rickyandmorty-variables.scss';
+
+:host {
+    .mat-toolbar{
+        display: block;
+        height: 5.333vw;
+        width: 100%;
+        margin: 0;
+        padding: 0 1.917vw 0 1.917vw;
+        border: none;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: $color-primary-light;
+        background-color:$color-primary-dark;
+
+        img{
+            display: block;
+            float: left;
+            clear: none;
+            width: 9.5vw;
+            height: 5.333vw;
+            margin: none;
+            border: none;
+        }
+        .menubutton{
+                display: flex;
+                justify-content: flex-end;
+                float: right;
+                clear: none;
+            button{
+                height: 3.333vw;
+                margin: 1vw 0 0 0;
+                padding: 0 1.067vw 0 0;
+                border: solid 1px $color-primary-light;
+                box-sizing: border-box;
+                background-color: transparent;
+                color: $color-secondary-dark;
+                overflow: hidden;
+                position: relative;
+                animation: colorChange 0.4s 1 ease-in reverse;
+                animation-fill-mode: forwards;
+                &:before{
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    z-index: 0;
+                    height: 3.333vw;
+                    top:0;
+                    width: 0;
+                    animation: sizeChange 0.4s 1 reverse;
+                    animation-fill-mode: forwards;
+                    background-color: $color-secondary-light;
+                }
+                &.active{
+                    animation: colorChange 0.4s 1 ease-in;
+                    animation-fill-mode: forwards;
+                    .ng-star-inserted{
+                        color: $color-secondary-medium;
+                        background-color: $color-primary-light
+                    }
+                    &:before{
+                        animation: sizeChange 0.6s 1 ease-out;
+                        animation-fill-mode: forwards;
+                    }
+                }
+
+                &:first-child{
+                    border-radius: 1.12vw 0 0 1.12vw;
+                    order: 1;
+                    &:before{
+                        right:0;
+                    }
+                }
+
+                &:last-child{
+                    border-radius: 0 1.12vw 1.12vw 0;
+                    border-right-style: none;
+                    order: 2;
+                    &:before{
+                        left:0;
+                    }
+                    .mat-icon{
+                        font-size: 1.8vw;
+                        width: 1.8vw;
+                    }
+                }
+
+                span{
+                    @include font-poppins(1.267vw, 600, 3.333vw);
+                }
+
+                .mat-icon{
+                    margin: 0 0.75vw 0 1.4vw;
+                    line-height: 3.333vw;
+                    width: 2.0vw;
+                    height: 3.333vw;
+                    font-size: 2.0vw;
+
+                }
+                .ng-star-inserted{
+                    display: inline-block;
+                    width: 1.8vw;
+                    height: 1.8vw;
+                    margin: 0 0 0 0.75vw;
+                    padding: 0;
+                    @include font-poppins(1.067vw, 800, 1.8vw);
+                    text-align: center;
+                    border-radius: 1.8vw;
+                    border: solid 1px $color-primary-light;
+                    color: $color-primary-dark;
+                    background-color: $color-secondary-light;
+                }
+            }
+        }
+    }
+    .spacer { flex: 1 1 auto; }
+}
+
+@keyframes colorChange {
+    0% {color: $color-secondary-dark;}
+    100% {color: $color-primary-dark;}
+}
+@keyframes sizeChange {
+    0% {width:0}
+    100% {width:100%}
+}

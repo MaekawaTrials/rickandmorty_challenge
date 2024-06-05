@@ -1,0 +1,40 @@
+$color-primary-dark: #0a0a0a;
+$color-primary-medium: #1f1f1f;
+$color-primary-light: #3d3d3d;
+
+$color-secondary-dark: #a4a4a4;;
+$color-secondary-medium: #fafafa;
+$color-secondary-light: #ffffff;
+
+$color-theme-back: #00b5cc;
+$color-theme-fore: #b2df28;
+
+$font-family-base: 'Roboto', sans-serif;
+$font-size-base: 16px;
+
+@mixin font-creepster($size, $weight, $line:auto) {
+    font-family: "Creepster", system-ui;
+    font-weight: $weight;
+    font-style: normal;
+    font-size: $size;
+    font-optical-sizing:auto;
+    line-height: $line;
+}
+
+@mixin font-poppins($size, $weight, $line:auto) {
+    font-family: "Poppins", sans-serif;
+    font-weight: $weight;
+    font-style: normal;
+    font-size: $size;
+    font-optical-sizing:auto;
+    line-height: $line;
+}
+
+@mixin font-pontano($size, $weight, $line:auto) {
+    font-family: "Pontano Sans", sans-serif;
+    font-weight: $weight;
+    font-style: normal;
+    font-size: $size;
+    font-optical-sizing:auto;
+    line-height: $line;
+}

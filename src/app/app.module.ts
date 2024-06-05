@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './state';
 import { HttpClientModule } from '@angular/common/http';
 import { FavoritesEffects } from './state/favorites.effects';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FavoritesEffects } from './state/favorites.effects';
     SharedModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([FavoritesEffects]),
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

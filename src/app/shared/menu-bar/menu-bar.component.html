@@ -1,16 +1,24 @@
 <mat-toolbar color="primary">
   <span>
-    <img src="assets/logo01.png" alt="Logo"/>
-    Rick and Morty Challenge
+    <img src="assets/logo01.png" alt="Rick and Morty Challenge"/>
   </span>
-  <span class="spacer"></span>
-  <button mat-button routerLink="/home">
-    <mat-icon>home</mat-icon>
-    Início
-  </button>
-  <button mat-button routerLink="/favorites">
-    <mat-icon>favorite</mat-icon>
-    Favoritos
-    <span *ngIf="(counter$ | async) !== null">{{ counter$ | async }}</span>
-  </button>
+  <div class="menubutton">
+    <button 
+      mat-button 
+      routerLink="/home" 
+      [ngClass]="{ 'active': isActive('/home') }" 
+      [disabled]="isActive('/home')">
+      <mat-icon aria-hidden="false" aria-label="home icon" fontIcon="home">home</mat-icon>
+      <span>Início</span>
+    </button>
+    <button 
+      mat-button 
+      routerLink="/favorites" 
+      [ngClass]="{ 'active': isActive('/favorites') }" 
+      [disabled]="isActive('/favorites')">
+      <mat-icon aria-hidden="false" aria-label="favorite icon" fontIcon="favorite">favorite</mat-icon>
+      <span>Favoritos</span>
+      <span *ngIf="(counter$ | async) !== null">{{ counter$ | async }}</span>
+    </button>
+  </div>
 </mat-toolbar>
