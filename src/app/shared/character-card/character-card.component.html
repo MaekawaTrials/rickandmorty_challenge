@@ -1,6 +1,6 @@
-<mat-card>
+<mat-card class="mat-card" [ngStyle]="{'animation-delay': getRandomDelay() + 'ms'}">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    <div mat-card-avatar></div>
     <mat-card-title>{{ character.name }}</mat-card-title>
     <mat-card-subtitle>{{ character.species }}</mat-card-subtitle>
   </mat-card-header>

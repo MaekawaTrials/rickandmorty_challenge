@@ -22,4 +22,8 @@ export class CharacterCardComponent {
   removeFromFavorites() {
     this.store.dispatch(removeFavorite({ id: this.character.id }));
   }
+
+  getRandomDelay(): number {
+    return Math.floor(Math.random() * 800); 
+  }
 }

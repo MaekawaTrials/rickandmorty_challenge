@@ -1,0 +1,27 @@
+@import '../../../styles/rickyandmorty-variables.scss';
+
+:host{
+    
+    .mat-card {
+        width: 18.667vw;
+        height: 24.833vw;
+        overflow: hidden;
+        display: block;
+        margin: 10px 0;
+        box-sizing: border-box;
+        animation: slit-in-diagonal 0.45s ease-out both;
+
+        &:nth-child(n+7) {
+            animation: none;
+            animation-delay: 0;
+        }
+    }
+}
+
+@keyframes slit-in-diagonal {
+    0% {transform: translateZ(-800px) rotate3d(1, 1, 0, 90deg);animation-timing-function: ease-in;opacity: 0; }
+    54% {transform: translateZ(-160px) rotate3d(1, 1, 0, 87deg);animation-timing-function: ease-in-out;opacity: 1;}
+    100% {transform: translateZ(0) rotate3d(1, 1, 0, 0);animation-timing-function: ease-out;}
+  }
+  
+  

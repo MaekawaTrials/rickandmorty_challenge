@@ -2,17 +2,19 @@
 <div class="containerHome">
   <h1>INÍCIO</h1>
   <app-search-box (search)="onSearch($event)"></app-search-box>
-  <div *ngIf="searchResults$ | async as characters; else initialMsg">
-    <ng-container *ngIf="characters.length > 0; else emptyMsg">
-      <ng-container *ngIf="favorites$ | async as favorites">
-        <app-character-card
-          *ngFor="let character of characters"
-          [character]="character"
-          [isFavorite]="isFavorite(character, favorites)"
-        ></app-character-card>
+  <section class="card-list">
+    <ng-container *ngIf="searchResults$ | async as characters; else initialMsg">
+      <ng-container *ngIf="characters.length > 0; else emptyMsg">
+        <ng-container *ngIf="favorites$ | async as favorites">
+          <app-character-card class="app-character-card"
+            *ngFor="let character of characters"
+            [character]="character"
+            [isFavorite]="isFavorite(character, favorites)"
+          ></app-character-card>
+        </ng-container>
       </ng-container>
     </ng-container>
-  </div>
+</section>
   <ng-template #initialMsg>
     <div class="msg-srch-initial">
       <p>Vamos começar?</p>

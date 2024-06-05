@@ -76,4 +76,6 @@ export class HomePageComponent {
   isFavorite(character: Character, favorites: Character[]): boolean {
     return favorites.some(fav => fav.id === character.id);
   }
+
+
 }
