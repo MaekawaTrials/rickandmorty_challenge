@@ -20,7 +20,7 @@
       (click)="toggleLaunchAnimation()">
       <mat-icon aria-hidden="false" aria-label="favorite icon" fontIcon="favorite">favorite</mat-icon>
       <span>Favoritos</span>
-      <span *ngIf="(counter$ | async) !== null">{{ counter$ | async }}</span>
+      <span *ngIf="(counter$ | async) !== null" class="counter">{{ counter$ | async }}</span>
     </button>
   </div>
 </mat-toolbar>

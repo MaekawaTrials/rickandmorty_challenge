@@ -1,9 +1,10 @@
-import { Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, ElementRef, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.scss']
+  styleUrls: ['./search-box.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SearchBoxComponent {
   @ViewChild('searchInput') searchInput!: ElementRef;
