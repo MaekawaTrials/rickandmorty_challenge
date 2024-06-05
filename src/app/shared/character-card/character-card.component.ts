@@ -12,14 +12,17 @@ import { AppState } from 'src/app/state';
 export class CharacterCardComponent {
   @Input() character!: Character;
   @Input() isFavorite = false;
+  @Input() launchAnimation = false;
 
   constructor(private store: Store<AppState>) {}
 
   addToFavorites() {
+    this.launchAnimation = true;
     this.store.dispatch(addFavorite({ character: this.character }));
   }
 
   removeFromFavorites() {
+    this.launchAnimation = true;
     this.store.dispatch(removeFavorite({ id: this.character.id }));
   }
 
