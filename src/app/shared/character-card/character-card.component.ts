@@ -11,8 +11,9 @@ import { AppState } from 'src/app/state';
 })
 export class CharacterCardComponent {
   @Input() character!: Character;
-  @Input() isFavorite = false;
-  @Input() launchAnimation = false;
+  @Input() isFavorite:boolean = false;
+  @Input() launchAnimation:boolean = false;
+  private delayApplied:number = 0;
 
   constructor(private store: Store<AppState>) {}
 
@@ -27,6 +28,9 @@ export class CharacterCardComponent {
   }
 
   getRandomDelay(): number {
-    return Math.floor(Math.random() * 800); 
+    if(this.delayApplied==0){
+      this.delayApplied = Math.floor(Math.random() * 800) + 1;
+    }
+    return this.delayApplied; 
   }
 }
