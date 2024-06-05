@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState, selectFavoritesCount } from 'src/app/state';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MenuBarComponent {
   counter$: Observable<number>;
+  @Input() launchAnimation:boolean = true;
   
   constructor(private store: Store<AppState>, private router: Router) {
     this.counter$ = this.store.pipe(select(selectFavoritesCount));
@@ -19,5 +20,11 @@ export class MenuBarComponent {
     //});
   }
 
-  isActive(url: string): boolean { return this.router.url === url; }
+  toggleLaunchAnimation() {
+    this.launchAnimation = true;
+  }
+
+  isActive(url: string): boolean {
+    return this.router.url === url;
+  }
 }

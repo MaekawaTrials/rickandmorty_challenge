@@ -6,7 +6,8 @@
     <ng-container *ngIf="searchResults$ | async as characters; else initialMsg">
       <ng-container *ngIf="characters.length > 0; else emptyMsg">
         <ng-container *ngIf="favorites$ | async as favorites">
-          <app-character-card class="app-character-card"
+          <app-character-card
+            class="app-character-card"
             *ngFor="let character of characters"
             [character]="character"
             [isFavorite]="isFavorite(character, favorites)"
@@ -14,7 +15,7 @@
         </ng-container>
       </ng-container>
     </ng-container>
-</section>
+  </section>
   <ng-template #initialMsg>
     <div class="msg-srch-initial">
       <p>Vamos começar?</p>

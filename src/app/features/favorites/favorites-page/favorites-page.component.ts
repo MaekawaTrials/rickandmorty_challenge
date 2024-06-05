@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Character } from 'src/app/state/character.model';
 import { AppState, selectAllFavorites } from 'src/app/state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorites-page',

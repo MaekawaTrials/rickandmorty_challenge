@@ -1,14 +1,23 @@
 <app-menu-bar></app-menu-bar>
-<div class="container">
+<div class="containerFavorites">
   <h1>FAVORITOS</h1>
-  <div *ngIf="favorites$ | async as characters; else emptyMsg">
-    <ng-container *ngIf="characters.length > 0; else emptyMsg">
-      <app-character-card *ngFor="let character of characters" [character]="character" [isFavorite]="true"></app-character-card>
+  <section class="card-list">
+    <ng-container *ngIf="favorites$ | async as characters; else emptyMsg">
+      <ng-container *ngIf="characters.length > 0; else emptyMsg">
+        <app-character-card 
+          class="app-character-card"
+          *ngFor="let character of characters" 
+          [character]="character" 
+          [isFavorite]="true">
+        </app-character-card>
+      </ng-container>
     </ng-container>
-  </div>
+  </section>
   <ng-template #emptyMsg>
     <div class="msg-favs-empty">
-      <p>Nenhum personagem favoritado.</p>
+      <p>Parece que você ainda não tem favoritos</p>
+      <p class="descr">Volte à página inicial e escolha os melhores para você.</p>
+      <button routerLink="/home" >Voltar ao início</button>
     </div>
   </ng-template>
 </div>

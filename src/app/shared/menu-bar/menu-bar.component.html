@@ -6,16 +6,18 @@
     <button 
       mat-button 
       routerLink="/home" 
-      [ngClass]="{ 'active': isActive('/home') }" 
-      [disabled]="isActive('/home')">
+      [ngClass]="{ 'active': isActive('/home'), 'animate': launchAnimation }" 
+      [disabled]="isActive('/home')"
+      (click)="toggleLaunchAnimation()">
       <mat-icon aria-hidden="false" aria-label="home icon" fontIcon="home">home</mat-icon>
       <span>Início</span>
     </button>
     <button 
       mat-button 
       routerLink="/favorites" 
-      [ngClass]="{ 'active': isActive('/favorites') }" 
-      [disabled]="isActive('/favorites')">
+      [ngClass]="{ 'active': isActive('/favorites'), 'animate': launchAnimation }" 
+      [disabled]="isActive('/favorites')"
+      (click)="toggleLaunchAnimation()">
       <mat-icon aria-hidden="false" aria-label="favorite icon" fontIcon="favorite">favorite</mat-icon>
       <span>Favoritos</span>
       <span *ngIf="(counter$ | async) !== null">{{ counter$ | async }}</span>

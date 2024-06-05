@@ -56,7 +56,7 @@ export class HomePageComponent {
     );
 
     this.searchResults$.subscribe(results => {
-      console.log('Resultados da pesquisa:', results);
+      //console.log('Resultados da pesquisa:', results);
     });
   }
 
