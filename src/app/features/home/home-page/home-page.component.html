@@ -1,5 +1,5 @@
 <app-menu-bar></app-menu-bar>
-<div class="container">
+<div class="containerHome">
   <h1>INÍCIO</h1>
   <app-search-box (search)="onSearch($event)"></app-search-box>
   <div *ngIf="searchResults$ | async as characters; else initialMsg">
@@ -15,12 +15,14 @@
   </div>
   <ng-template #initialMsg>
     <div class="msg-srch-initial">
-      <p>Pesquise por um personagem para começar.</p>
+      <p>Vamos começar?</p>
+      <p class="descr">Pesquise pelo nome de um personagem para começar.</p>
     </div>
   </ng-template>
   <ng-template #emptyMsg>
     <div class="msg-srch-empty">
-      <p>Nenhum personagem encontrado.</p>
+      <p>Nada foi encontrado.</p>
+      <p class="descr">Tente realizar uma nova busca.</p>
     </div>
   </ng-template>
 </div>

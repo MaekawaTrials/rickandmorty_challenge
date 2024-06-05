@@ -1,0 +1,42 @@
+@import '../../../../styles/rickyandmorty-variables.scss';
+
+.containerHome{
+    width: 60vw;
+    margin:0 auto;
+    display: block;
+
+    h1{
+        @include font-creepster(4vw, 400, 4.5vw);
+        letter-spacing: 0.3vw;
+        float:left;
+        text-align: left;
+        padding: 0;
+        margin:3.75vw 0 3.75vw 0;
+        color: $color-theme-back;
+        text-shadow: -.167vw -.167vw 0 $color-theme-fore, .167vw -.167vw 0 $color-theme-fore, -.167vw  .167vw 0 $color-theme-fore, .167vw  .167vw 0 $color-theme-fore;
+    }
+
+    .msg-srch-initial, .msg-srch-empty{
+        float:left;
+        clear: left;
+        display: block;
+        width: 100%;
+        height: calc(90vh - 17.333vw);
+        background-color: $color-primary-dark;
+        border: solid 1px $color-primary-light;
+        border-radius: 1vw; 
+    }
+    
+    p{
+        @include font-poppins(2vw, 700, 2.2vw);
+        color: $color-secondary-light;
+        text-align: center;
+        padding: 0 2vw;
+        margin: calc(52vh - 17.333vw) 0 0 0;
+        &.descr{
+            @include font-poppins(1.5vw, 500, 2.2vw);
+            color: $color-secondary-dark;
+            margin: 1.083vw 0 0 0;
+        }
+    }
+}

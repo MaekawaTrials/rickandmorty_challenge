@@ -14,7 +14,6 @@ $font-size-base: 16px;
 
 @mixin font-creepster($size, $weight, $line:auto) {
     font-family: "Creepster", system-ui;
-    font-weight: $weight;
     font-style: normal;
     font-size: $size;
     font-optical-sizing:auto;
