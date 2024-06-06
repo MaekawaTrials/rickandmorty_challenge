@@ -1,5 +1,10 @@
 
-# Rick and Morty Challenge
+# 🚀 Rick and Morty Challenge
+
+![challenge image](https://raw.githubusercontent.com/MaekawaTrials/rickandmorty_challenge/main/src/assets/screen.JPG)
+
+## DEPLOY
+O projeto está no ar, [Acesse aqui!](https://rick-and-morty-maekawatrials-projects.vercel.app/)
 
 ## Descrição do Projeto
 
@@ -23,16 +28,16 @@ Este projeto foi desenvolvido seguindo princípios de desenvolvimento moderno em
    - Escrever testes que cobrissem todos os cenários de uso, incluindo buscas bem-sucedidas e falhas, foi um desafio. Garantir que os testes fossem robustos e refletissem o comportamento real da aplicação exigiu várias iterações.
    - Testes para componentes com dependências complexas, como o uso do NgRx Store e HttpClient, foram particularmente desafiadores e exigiram a configuração correta de providers e mocks.
 
-### Considerações de Complexidade (Big O)
+### Considerações Gerais 
 
 1. **Busca de Personagens:**
-   - A busca de personagens utiliza operadores RxJS para otimizar o desempenho. A complexidade da busca em si é O(n), onde n é o número de personagens retornados pela API. O uso de `debounceTime` e `distinctUntilChanged` ajuda a reduzir a quantidade de chamadas à API, melhorando a eficiência geral.
+   - A busca de personagens utiliza operadores RxJS para otimizar o desempenho. O uso de `debounceTime` e `distinctUntilChanged` ajuda a reduzir a quantidade de chamadas à API, melhorando a eficiência geral.
 
 2. **Gerenciamento de Favoritos:**
-   - Adicionar e remover personagens dos favoritos envolve operações de pesquisa e atualização no array de favoritos. A complexidade dessas operações é O(n), onde n é o número de personagens na lista de favoritos.
+   - Adicionar e remover personagens dos favoritos envolve operações de pesquisa e atualização no array de favoritos. 
 
 3. **Persistência no LocalStorage:**
-   - As operações de leitura e escrita no `localStorage` são O(1) devido à natureza do armazenamento chave-valor, garantindo acesso rápido aos dados persistidos.
+   - As operações de leitura e escrita no `localStorage` foram destaques devido à natureza do armazenamento chave-valor, garantindo acesso rápido aos dados persistidos.
 
 ## Funcionalidades Implementadas
 

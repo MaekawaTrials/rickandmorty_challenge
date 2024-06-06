@@ -50,10 +50,10 @@
     }
 
     .card-list{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-content: flex-start;
+        display: block;
+        position: relative;
+        float: left;
+        clear: both;
         margin: 0;
         width: 100%;
     }

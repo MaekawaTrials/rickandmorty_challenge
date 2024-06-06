@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
@@ -21,10 +21,11 @@ interface SearchState {
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent {
+export class HomePageComponent  implements OnInit {
   searchTerm$ = new Subject<string>();
   searchResults$: Observable<Character[]> = of([]);
   favorites$: Observable<Character[]>;
+  private initialSearch = 'Rick';
 
   constructor(private http: HttpClient, private store: Store<AppState>) {
     this.favorites$ = this.store.pipe(select(selectAllFavorites));
@@ -60,6 +61,10 @@ export class HomePageComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.searchTerm$.next(this.initialSearch);  // Emite o termo de pesquisa inicial
+  }
+  
   onSearch(term: string) {
     this.searchTerm$.next(term);
   }
