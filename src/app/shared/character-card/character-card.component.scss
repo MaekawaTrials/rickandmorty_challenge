@@ -2,18 +2,27 @@
 
 :host{
     
+    margin: 0 2vw 2vw 0;
+    display:block;
+    float:left;
+
+    &:nth-child(3n){
+        margin-right: 0;
+    }
+    
     .mat-card {
         width: 18.667vw;
         height: 24.833vw;
         overflow: hidden;
         display: block;
-        float:left;
-        margin: 0 0.833vw 0.833vw 0;
+        
         box-sizing: border-box;
         animation: slit 0.45s ease-out both;
         background-color: $color-primary-dark;
         border: solid 1px $color-primary-light;
         border-radius: 1vw;
+        margin:0;
+        
 
         &:nth-child(n+7) {
             animation: none;

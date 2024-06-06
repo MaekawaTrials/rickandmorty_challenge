@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
-import { catchError, debounceTime, distinctUntilChanged, filter, map, scan, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, debounceTime, distinctUntilChanged, filter, delay, map, scan, shareReplay, switchMap } from 'rxjs/operators';
 import { Character } from 'src/app/state/character.model';
 import { AppState, selectAllFavorites } from 'src/app/state';
 
@@ -25,7 +25,9 @@ export class HomePageComponent  implements OnInit {
   searchTerm$ = new Subject<string>();
   searchResults$: Observable<Character[]> = of([]);
   favorites$: Observable<Character[]>;
-  private initialSearch = 'Rick';
+  private initialSearch = '';
+  private minLoadingTime = 500;
+  isLoading = false;
 
   constructor(private http: HttpClient, private store: Store<AppState>) {
     this.favorites$ = this.store.pipe(select(selectAllFavorites));
@@ -33,7 +35,7 @@ export class HomePageComponent  implements OnInit {
     this.searchResults$ = this.searchTerm$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      filter(term => term.length >= 3),
+      //filter(term => term.length >= 3),
       scan((state: SearchState, term: string) => {
         if (state.cache[term]) {
           return { ...state, current: state.cache[term], term };
@@ -42,17 +44,27 @@ export class HomePageComponent  implements OnInit {
       }, { cache: {}, current: [], term: '' } as SearchState),
       switchMap(state => {
         if (state.current.length > 0) {
+          this.isLoading = false;
           return of(state.current);
         }
+        this.isLoading = true;
         return this.searchCharacters(state.term).pipe(
+          delay(this.minLoadingTime),
           map(results => {
             state.cache[state.term] = results;
+            this.isLoading = false;
             return results;
           }),
-          catchError(() => of([]))
+          catchError(() => {
+            this.isLoading = false;
+            return of([]);
+          })
         );
       }),
-      catchError(() => of([])),
+      catchError(() => {
+        this.isLoading = false;
+        return of([]);
+      }),
       shareReplay(1)
     );
 
@@ -62,7 +74,7 @@ export class HomePageComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchTerm$.next(this.initialSearch);  // Emite o termo de pesquisa inicial
+    this.searchTerm$.next(this.initialSearch);
   }
   
   onSearch(term: string) {
@@ -70,10 +82,11 @@ export class HomePageComponent  implements OnInit {
   }
 
   searchCharacters(term: string): Observable<Character[]> {
-    if (!term.trim()) {
-      return of([]);
-    }
-    return this.http.get<Character[]>(`https://rickandmortyapi.com/api/character/?name=${term}`).pipe(
+    let URL = `https://rickandmortyapi.com/api/character/?name=${term}`
+    if (term.length == 0)
+      URL = 'https://rickandmortyapi.com/api/character'
+
+    return this.http.get<Character[]>(URL).pipe(
       map((response: any) => response.results || [])
     );
   }

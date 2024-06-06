@@ -1,0 +1,44 @@
+@import '../../../styles/rickyandmorty-variables.scss';
+
+app-menu-bar{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:600;
+}
+.loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position:fixed;
+        bottom:0;
+        left:0;
+        z-index:500;
+        width: 100vw;
+        height: calc(100vh - 17.333vw);
+        background-color:  $color-primary-medium;
+        animation: fadeIn 200ms ease-in-out 1;
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:12.917vw;
+        height: auto;
+        fill: $color-primary-light;
+
+        svg{
+            animation: pulsate 300ms ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes pulsate {
+    0% {transform: scale(1);color:$color-primary-dark;}
+    50% {transform: scale(1.5);color:$color-theme-back;}
+    100% {transform: scale(1);color:$color-primary-dark;}
+}
+
+@keyframes fadeIn {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}

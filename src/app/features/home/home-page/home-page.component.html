@@ -2,8 +2,11 @@
 <div class="containerHome">
   <h1>INÍCIO</h1>
   <app-search-box (search)="onSearch($event)" class="app-search-box" ></app-search-box>
+  <div *ngIf="isLoading">
+    <app-loading></app-loading>
+  </div>
   <section class="card-list">
-    <ng-container *ngIf="searchResults$ | async as characters; else initialMsg">
+    <ng-container *ngIf="searchResults$ | async as characters;">
       <ng-container *ngIf="characters.length > 0; else emptyMsg">
         <ng-container *ngIf="favorites$ | async as favorites">
           <app-character-card
@@ -16,12 +19,6 @@
       </ng-container>
     </ng-container>
   </section>
-  <ng-template #initialMsg>
-    <div class="msg-srch-initial">
-      <p>Vamos começar?</p>
-      <p class="descr">Pesquise pelo nome de um personagem para começar.</p>
-    </div>
-  </ng-template>
   <ng-template #emptyMsg>
     <div class="msg-srch-empty">
       <p>Nada foi encontrado.</p>

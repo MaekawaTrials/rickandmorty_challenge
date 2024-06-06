@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { CharacterCardComponent } from './character-card/character-card.component';
 import { RouterModule } from '@angular/router';
+import { LoadingComponent } from './loading/loading.component';
+
 
 @NgModule({
   imports: [
@@ -21,11 +23,13 @@ import { RouterModule } from '@angular/router';
   ],
   declarations: [
     MenuBarComponent,
-    CharacterCardComponent
+    CharacterCardComponent,
+    LoadingComponent
   ],
   exports: [
     MenuBarComponent,
-    CharacterCardComponent
+    CharacterCardComponent,
+    LoadingComponent    
   ]
 })
 export class SharedModule {}
