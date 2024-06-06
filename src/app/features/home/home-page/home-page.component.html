@@ -1,7 +1,7 @@
 <app-menu-bar></app-menu-bar>
 <div class="containerHome">
   <h1>INÍCIO</h1>
-  <app-search-box (search)="onSearch($event)" class="app-search-box"></app-search-box>
+  <app-search-box (search)="onSearch($event)" class="app-search-box" ></app-search-box>
   <section class="card-list">
     <ng-container *ngIf="searchResults$ | async as characters; else initialMsg">
       <ng-container *ngIf="characters.length > 0; else emptyMsg">

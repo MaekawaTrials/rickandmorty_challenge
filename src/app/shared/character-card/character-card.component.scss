@@ -7,7 +7,8 @@
         height: 24.833vw;
         overflow: hidden;
         display: block;
-        margin: 10px 0;
+        float:left;
+        margin: 0 0.833vw 0.833vw 0;
         box-sizing: border-box;
         animation: slit 0.45s ease-out both;
         background-color: $color-primary-dark;
