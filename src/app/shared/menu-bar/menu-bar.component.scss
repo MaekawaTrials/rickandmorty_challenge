@@ -40,6 +40,7 @@
                 position: relative;
                 animation: colorChange 0.4s 1 ease-in reverse;
                 animation-fill-mode: forwards;
+                min-width: 0;
                 &.animate:before{
                     content: '';
                     position: absolute;
@@ -89,7 +90,10 @@
                     }
                 }
 
-                span{
+                span.label{
+                    display:block;
+                    float:left;
+                    clear:none;
                     @include font-poppins(1.267vw, 600, 3.333vw);
                 }
 
@@ -101,11 +105,13 @@
                     font-size: 2.0vw;
 
                 }
-                .counter{
-                    display: inline-block;
+                span.counter{
+                    display:block;
+                    float:left;
+                    clear:none;
                     width: 1.8vw;
                     height: 1.8vw;
-                    margin: 0 0 0 0.75vw;
+                    margin: 0.67vw 0 0 0.75vw;
                     padding: 0;
                     @include font-poppins(1.067vw, 800, 1.8vw);
                     text-align: center;

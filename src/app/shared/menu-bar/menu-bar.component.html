@@ -10,7 +10,7 @@
       [disabled]="isActive('/home')"
       (click)="toggleLaunchAnimation()">
       <mat-icon aria-hidden="false" aria-label="home icon" fontIcon="home">home</mat-icon>
-      <span>Início</span>
+      <span class="label">Início</span>
     </button>
     <button 
       mat-button 
@@ -19,7 +19,7 @@
       [disabled]="isActive('/favorites')"
       (click)="toggleLaunchAnimation()">
       <mat-icon aria-hidden="false" aria-label="favorite icon" fontIcon="favorite">favorite</mat-icon>
-      <span>Favoritos</span>
+      <span class="label">Favoritos</span>
       <span *ngIf="(counter$ | async) !== null" class="counter">{{ counter$ | async }}</span>
     </button>
   </div>

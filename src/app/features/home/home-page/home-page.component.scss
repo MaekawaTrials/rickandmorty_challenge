@@ -30,10 +30,20 @@
         clear: left;
         display: block;
         width: 100%;
-        height: calc(90vh - 17.333vw);
+        min-height: calc(90vh - 12.333vw);
         background-color: $color-primary-dark;
         border: solid 1px $color-primary-light;
-        border-radius: 1vw; 
+        border-radius: 1vw;
+        padding: 0 0 5vw 0;
+        margin: 0 0 4vw 0;
+        .random-list {
+            width: 100%;
+            display:flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            gap:3vw;
+            
+        }   
     }
 
     p{
@@ -41,11 +51,11 @@
         color: $color-secondary-light;
         text-align: center;
         padding: 0 2vw;
-        margin: calc(52vh - 17.333vw) 0 0 0;
+        margin: 5vw 0 1.083vw 0;
         &.descr{
             @include font-poppins(1.5vw, 500, 2.2vw);
             color: $color-secondary-dark;
-            margin: 1.083vw 0 0 0;
+            margin: 0 0 1.083vw 0;
         }
     }
 

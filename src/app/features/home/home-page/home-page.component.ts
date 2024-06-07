@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, filter, delay, map, scan, shareReplay, switchMap } from 'rxjs/operators';
 import { Character } from 'src/app/state/character.model';
 import { AppState, selectAllFavorites } from 'src/app/state';
+import { SearchBoxComponent } from '../search-box/search-box.component';
 
 interface SearchCache {
   [key: string]: Character[];
@@ -21,13 +22,17 @@ interface SearchState {
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent  implements OnInit {
+
+export class HomePageComponent  implements OnInit, AfterViewInit {
+  @ViewChild('searchBox') searchBox!: SearchBoxComponent;
+
   searchTerm$ = new Subject<string>();
   searchResults$: Observable<Character[]> = of([]);
   favorites$: Observable<Character[]>;
-  private initialSearch = '';
-  private minLoadingTime = 500;
-  isLoading = false;
+  private initialSearch:string = '';
+  private minLoadingTime:number = 500;
+  isLoading:boolean = false;
+  currentSearchTerm:string = '';
 
   constructor(private http: HttpClient, private store: Store<AppState>) {
     this.favorites$ = this.store.pipe(select(selectAllFavorites));
@@ -37,6 +42,7 @@ export class HomePageComponent  implements OnInit {
       distinctUntilChanged(),
       //filter(term => term.length >= 3),
       scan((state: SearchState, term: string) => {
+        this.currentSearchTerm = term;
         if (state.cache[term]) {
           return { ...state, current: state.cache[term], term };
         }
@@ -75,6 +81,10 @@ export class HomePageComponent  implements OnInit {
 
   ngOnInit(): void {
     this.searchTerm$.next(this.initialSearch);
+  }
+
+  ngAfterViewInit(): void {
+    this.searchBox.focusInput();
   }
   
   onSearch(term: string) {

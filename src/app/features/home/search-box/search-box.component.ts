@@ -28,5 +28,10 @@ export class SearchBoxComponent implements OnInit {
       this.searchInput.nativeElement.select();
     }, 2000);
   }
+
+  focusInput(): void {
+    this.searchInput.nativeElement.focus();
+  }
+  
 }
 
