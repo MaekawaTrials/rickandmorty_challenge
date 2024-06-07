@@ -12,6 +12,8 @@ import { reducers } from './state';
 import { HttpClientModule } from '@angular/common/http';
 import { FavoritesEffects } from './state/favorites.effects';
 import { MatIconModule } from '@angular/material/icon';
+import { SearchEffects } from './state/search.effects'; 
+import { searchReducer } from './state/search.reducer'; 
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { MatIconModule } from '@angular/material/icon';
     FavoritesModule,
     SharedModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([FavoritesEffects]),
+    StoreModule.forFeature('search', searchReducer), 
+    EffectsModule.forRoot([FavoritesEffects, SearchEffects]),
     HttpClientModule,
     MatIconModule
   ],

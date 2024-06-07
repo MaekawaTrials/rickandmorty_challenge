@@ -22,13 +22,12 @@
   <ng-template #emptyMsg>
     <div class="msg-srch-empty">
       <p>Nada foi encontrado.</p>
-      <p class="descr">Não existe um personagem chamado <b>"{{ currentSearchTerm }}"</b>.</p>
+      <p class="descr">Não existe um personagem chamado <b>"{{ currentSearchTerm$ | async }}"</b>.</p>
       <p class="descr">Tente realizar uma nova busca para encontrar <br> outros personagens como esses exemplos abaixo:</p>
       <app-random-characters
         [numberOfCharacters]="4" 
         class="random-list"
       ></app-random-characters>
     </div>
-    
   </ng-template>
 </div>
