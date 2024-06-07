@@ -16,7 +16,7 @@
             [isFavorite]="isFavorite(character, favorites)"
           ></app-character-card>
         </ng-container>
-        <div class="load-more-bt">
+        <div class="load-more-bt" *ngIf="(hasMoreCharacters$ | async)">
           <button (click)="onLoadMore()">Carregar mais...</button>
         </div>
       </ng-container>

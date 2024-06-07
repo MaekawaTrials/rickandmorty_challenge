@@ -1,12 +1,10 @@
-// search-box.component.ts
-import { Component, ViewChild, ElementRef, Output, EventEmitter, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, Output, EventEmitter, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./search-box.component.scss']
 })
 export class SearchBoxComponent implements OnInit {
   @ViewChild('searchInput') searchInput!: ElementRef;

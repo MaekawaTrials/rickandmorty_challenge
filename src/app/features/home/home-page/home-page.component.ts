@@ -1,24 +1,12 @@
-// home-page.component.ts
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { HttpClient } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
-import { catchError, debounceTime, distinctUntilChanged, delay, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { Character } from 'src/app/state/character.model';
 import { AppState, selectAllFavorites } from 'src/app/state';
 import { SearchBoxComponent } from '../search-box/search-box.component';
 import { searchCharacters, loadMoreCharacters } from 'src/app/state/search.actions';
-import { selectSearchResults, selectSearchLoading, selectSearchQuery } from 'src/app/state/search.selectors';
-
-interface SearchCache {
-  [key: string]: Character[];
-}
-
-interface SearchState {
-  cache: SearchCache;
-  current: Character[];
-  term: string;
-}
+import { selectSearchResults, selectSearchLoading, selectSearchQuery, selectHasMoreCharacters } from 'src/app/state/search.selectors';
 
 @Component({
   selector: 'app-home-page',
@@ -32,7 +20,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   favorites$: Observable<Character[]>;
   isLoading$: Observable<boolean>;
   currentSearchTerm$: Observable<string>;
-  private initialSearch: string = '';
+  hasMoreCharacters$: Observable<boolean>;
   private searchSubject = new Subject<string>();
 
   constructor(private store: Store<AppState>) {
@@ -40,6 +28,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.searchResults$ = this.store.pipe(select(selectSearchResults));
     this.isLoading$ = this.store.pipe(select(selectSearchLoading));
     this.currentSearchTerm$ = this.store.pipe(select(selectSearchQuery));
+    this.hasMoreCharacters$ = this.store.pipe(select(selectHasMoreCharacters));
   }
 
   ngOnInit(): void {
@@ -49,11 +38,14 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       tap(term => this.store.dispatch(searchCharacters({ query: term })))
     ).subscribe();
 
-    this.searchBox.searchTerm$.next(this.initialSearch);
+    const initialSearch = localStorage.getItem('lastSearchTerm') || '';
+    this.searchSubject.next(initialSearch);
   }
 
   ngAfterViewInit(): void {
-    this.searchBox.focusInput();
+    if (this.searchBox) {
+      this.searchBox.focusInput();
+    }
   }
 
   onSearch(term: string) {

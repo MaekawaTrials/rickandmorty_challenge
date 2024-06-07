@@ -18,7 +18,7 @@ export const selectSearchQuery = createSelector(
   (state: SearchState) => state.query
 );
 
-export const selectSearchTerm = createSelector(
+export const selectHasMoreCharacters = createSelector(
   selectSearchState,
-  (state: SearchState) => state.query
+  (state: SearchState) => state.page < state.totalPages
 );

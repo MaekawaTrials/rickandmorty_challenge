@@ -12,6 +12,7 @@ import { reducers } from './state';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchEffects } from './state/search.effects';
 import { MatIconModule } from '@angular/material/icon';
+import { SearchCacheService } from './state/search-cache.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [SearchCacheService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -39,6 +39,11 @@ Este projeto foi desenvolvido seguindo princípios de desenvolvimento moderno em
 3. **Persistência no LocalStorage:**
    - As operações de leitura e escrita no `localStorage` foram destaques devido à natureza do armazenamento chave-valor, garantindo acesso rápido aos dados persistidos.
 
+4. **Cache de Resultados de Busca:**
+   - Implementado um serviço de cache (`SearchCacheService`) para armazenar os resultados de busca e evitar chamadas repetidas à API. 
+   - O cache armazena os resultados e o total de páginas para cada consulta.
+
+
 ## Funcionalidades Implementadas
 
 1. **Busca de Personagens:**
@@ -57,6 +62,7 @@ Este projeto foi desenvolvido seguindo princípios de desenvolvimento moderno em
 4. **Armazenamento Local:**
    - Persiste a lista de favoritos no `localStorage` para manter os dados entre sessões.
 
+
 ## Estrutura do Projeto
 
 ### Estrutura de Diretórios
@@ -67,10 +73,10 @@ src/
 │   ├── features/
 │   │   ├── favorites/
 │   │   │   ├── favorites-page/
-│   │   │   ├── favorites-page.component.html
-│   │   │   ├── favorites-page.component.scss
-│   │   │   ├── favorites-page.component.spec.ts
-│   │   │   ├── favorites-page.component.ts
+│   │   │   │   ├── favorites-page.component.html
+│   │   │   │   ├── favorites-page.component.scss
+│   │   │   │   ├── favorites-page.component.spec.ts
+│   │   │   │   ├── favorites-page.component.ts
 │   │   ├── favorites.module.ts
 │   │   ├── home/
 │   │   │   ├── home-page/
@@ -114,6 +120,7 @@ src/
 │   │   ├── favorites.reducer.ts
 │   │   ├── index.ts
 │   │   ├── search.actions.ts
+│   │   ├── search-cache.service.ts
 │   │   ├── search.effects.ts
 │   │   ├── search.reducer.ts
 │   │   ├── search.selectors.ts
@@ -136,6 +143,7 @@ src/
 angular.json
 package-lock.json
 README.md
+
 ```
 
 ### Componentes e Páginas
