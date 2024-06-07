@@ -16,7 +16,9 @@
             [isFavorite]="isFavorite(character, favorites)"
           ></app-character-card>
         </ng-container>
-        <button (click)="onLoadMore()">Carregar mais...</button>
+        <div class="load-more-bt">
+          <button (click)="onLoadMore()">Carregar mais...</button>
+        </div>
       </ng-container>
     </ng-container>
   </section>

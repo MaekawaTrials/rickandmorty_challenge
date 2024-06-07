@@ -71,4 +71,25 @@
             display:none;
         }
     }
+
+    .load-more-bt{
+        width:100%;
+        height: auto;
+        display: block;
+        float: left;
+        clear: both;
+        margin: 3.43vw 0;
+        button{
+            display:block;
+            width: 13.583vw;
+            height: 3.333vw;
+            margin: 0 auto;
+            border:none;
+            border-radius: 1vw; 
+            text-align: center;
+            @include font-poppins(1.167vw, 700, 3.333vw);
+            color: $color-primary-dark;
+            background-color: $color-secondary-light;
+        }
+    }
 }
