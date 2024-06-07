@@ -10,10 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './state';
 import { HttpClientModule } from '@angular/common/http';
-import { FavoritesEffects } from './state/favorites.effects';
+import { SearchEffects } from './state/search.effects';
 import { MatIconModule } from '@angular/material/icon';
-import { SearchEffects } from './state/search.effects'; 
-import { searchReducer } from './state/search.reducer'; 
 
 @NgModule({
   declarations: [
@@ -27,8 +25,7 @@ import { searchReducer } from './state/search.reducer';
     FavoritesModule,
     SharedModule,
     StoreModule.forRoot(reducers),
-    StoreModule.forFeature('search', searchReducer), 
-    EffectsModule.forRoot([FavoritesEffects, SearchEffects]),
+    EffectsModule.forRoot([SearchEffects]),
     HttpClientModule,
     MatIconModule
   ],

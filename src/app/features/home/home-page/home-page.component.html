@@ -2,12 +2,12 @@
 <div class="containerHome">
   <h1>INÍCIO</h1>
   <app-search-box (search)="onSearch($event)" class="app-search-box" #searchBox></app-search-box>
-  <div *ngIf="isLoading">
+  <div *ngIf="isLoading$ | async">
     <app-loading></app-loading>
   </div>
   <section class="card-list">
-    <ng-container *ngIf="searchResults$ | async as characters;">
-      <ng-container *ngIf="characters.length > 0; else emptyMsg">
+    <ng-container *ngIf="(searchResults$ | async) as characters">
+      <ng-container *ngIf="(characters.length > 0); else noResults">
         <ng-container *ngIf="favorites$ | async as favorites">
           <app-character-card
             class="app-character-card"
@@ -16,18 +16,18 @@
             [isFavorite]="isFavorite(character, favorites)"
           ></app-character-card>
         </ng-container>
+        <button (click)="onLoadMore()">Carregar mais...</button>
       </ng-container>
     </ng-container>
   </section>
-  <ng-template #emptyMsg>
-    <div class="msg-srch-empty">
-      <p>Nada foi encontrado.</p>
-      <p class="descr">Não existe um personagem chamado <b>"{{ currentSearchTerm$ | async }}"</b>.</p>
-      <p class="descr">Tente realizar uma nova busca para encontrar <br> outros personagens como esses exemplos abaixo:</p>
-      <app-random-characters
-        [numberOfCharacters]="4" 
-        class="random-list"
-      ></app-random-characters>
+  <ng-template #noResults>
+    <div *ngIf="!(isLoading$ | async)">
+      <div class="msg-srch-empty">
+        <p>Nada foi encontrado.</p>
+        <p class="descr">Não existe um personagem chamado <b>"{{ currentSearchTerm$ | async }}"</b>.</p>
+        <p class="descr">Tente realizar uma nova busca para encontrar <br> outros personagens como esses exemplos abaixo:</p>
+        <app-random-characters [numberOfCharacters]="4" class="random-list"></app-random-characters>
+      </div>
     </div>
   </ng-template>
 </div>

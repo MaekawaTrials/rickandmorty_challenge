@@ -8,10 +8,14 @@ export const searchCharacters = createAction(
 
 export const searchCharactersSuccess = createAction(
   '[Search] Search Characters Success',
-  props<{ characters: Character[] }>()
+  props<{ characters: Character[], totalPages: number }>()
 );
 
 export const searchCharactersFailure = createAction(
   '[Search] Search Characters Failure',
   props<{ error: any }>()
+);
+
+export const loadMoreCharacters = createAction(
+  '[Search] Load More Characters'
 );
