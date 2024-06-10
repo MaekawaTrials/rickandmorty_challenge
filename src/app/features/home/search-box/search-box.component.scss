@@ -1,37 +1,94 @@
 @import '../../../../styles/rickyandmorty-variables.scss';
 
     div.form-field{
-        width: 27.333vw;
-        height: 4.083vw;
+        width: 80vw;
+        height: 11.95vw;
         background-color: transparent;
         border: solid 1px #5D5D5D;
-        border-radius: 1vw;
+        border-radius: 2.93vw;
         position:relative;
+
+        @media (min-width: 400px) {
+            width: 43.5vw;
+            height: 6.50vw;
+            border-radius: 1.59vw;
+        }
+        @media (min-width: 576px) {
+            width: 34.14vw;
+            height: 5.1vw;
+            border-radius: 1.25;
+        }
+        @media (min-width: 768px) {
+            width: 27.333vw;
+            height: 4.083vw;
+            border-radius: 1vw;            
+        }
 
         label{
             position:absolute;
-            top:-0.7vw;
-            left:1.2vw;
-            width:6vw;
-            height:1.417vw;
-            @include font-poppins(1vw, 500, 1.417vw);
+            top:-1.9vw;
+            left:3vw;
+            width:18vw;
+            height:5.1vw;
+            @include font-poppins(3.35vw, 500, 3.35vw);
             text-align: center;
             color: #A4A4A4;
             background-color: $color-primary-medium;
+
+            @media (min-width: 400px) {
+                top:-1.21vw;
+                left:1.6vw;
+                width:12.3vw;
+                height:2.2vw;
+                @include font-poppins(2.2vw, 500, 2.2vw);
+            }
+            @media (min-width: 576px) {
+                top:-0.7vw;
+                left:1.2vw;
+                width:7.5vw;
+                height:1.417vw;
+                @include font-poppins(1.3vw, 500, 1.417vw);
+            }
+            @media (min-width: 768px) {
+                top:-0.7vw;
+                left:1.2vw;
+                width:6vw;
+                height:1.417vw;
+                @include font-poppins(1vw, 500, 1.417vw);
+            }
         }
 
         input{
             display: block;
-            width: 25.45vw;
-            height: 4.083vw;
+            width: 75vw;
+            height: 11.95vw;
             border: none;
             background: none;
             outline: none;
             box-shadow: none;
             padding: 0;
-            margin: 0 0 0 1.8vw;
-            @include font-poppins(1.333vw, 500, 4.083vw);
+            margin: 0 0 0 5vw;
+            @include font-poppins(4.333vw, 500, 11.95vw);
             color: $color-secondary-medium;
+
+            @media (min-width: 400px) {
+                width: 41.5vw;
+                height: 6.5vw;
+                margin: 0 0 0 2vw;
+                @include font-poppins(2.333vw, 500, 6.5vw);
+            }
+            @media (min-width: 576px) {
+                width: 31.14vw;
+                height: 5.1vw;
+                margin: 0 0 0 2vw;
+                @include font-poppins(1.9vw, 500, 5.1vw);
+            }
+            @media (min-width: 768px) {
+                width: 25.45vw;
+                height: 4.083vw;
+                margin: 0 0 0 1.8vw;
+                @include font-poppins(1.333vw, 500, 4.083vw);
+            }
         }
     }
 

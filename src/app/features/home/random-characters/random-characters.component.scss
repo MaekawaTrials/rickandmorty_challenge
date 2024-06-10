@@ -1,8 +1,17 @@
 :host{
     .app-character-card{
         margin:0;
-        float:none;
-        clear: none;
-        display: flexbox;
+        float:unset;
+        clear:unset;
+
+        @media (min-width: 400px) {
+            transform: scale(0.93);
+        }
+        @media (min-width: 576px) {
+            
+        }
+        @media (min-width: 768px) {
+            
+        }
     }
 }
