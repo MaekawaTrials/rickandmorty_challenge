@@ -201,15 +201,34 @@
         margin: 3.43vw 0;
         button{
             display:block;
-            width: 13.583vw;
-            height: 3.333vw;
-            margin: 0 auto;
+            width: 47.583vw;
+            height: 11.68vw;
+            border-radius: 1.6vw; 
+            @include font-poppins(4.67vw, 700, 11.68vw);
+            margin: 0 auto 10vw auto;
             border:none;
-            border-radius: 1vw; 
             text-align: center;
-            @include font-poppins(1.167vw, 700, 3.333vw);
             color: $color-primary-dark;
             background-color: $color-secondary-light;
+
+            @media (min-width: 400px) {
+                width: 25.583vw;
+                height: 6.28vw;
+                border-radius: 2.3vw; 
+                @include font-poppins(1.67vw, 700, 6.28vw);
+            }
+            @media (min-width: 576px) {
+                width: 18.583vw;
+                height: 4.56vw;
+                border-radius: 1.3vw; 
+                @include font-poppins(1.67vw, 700, 4.56vw);
+            }
+            @media (min-width: 768px) {
+                width: 13.583vw;
+                height: 3.333vw;
+                border-radius: 1vw; 
+                @include font-poppins(1.167vw, 700, 3.333vw);
+            }
         }
     }
 }
