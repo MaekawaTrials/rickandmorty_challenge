@@ -1,28 +1,93 @@
 @import '../../../../styles/rickyandmorty-variables.scss';
 
 .containerHome{
-    width: 60vw;
+    width: 85vw;
     margin:0 auto;
     display: block;
 
+    @media (min-width: 400px) {
+        width: 85vw;
+    }
+    @media (min-width: 576px) {
+        width: 80vw;
+    }
+    @media (min-width: 768px) {
+        width: 60vw;
+    }
+    @media (min-width: 1200px) {
+        
+    }
+
+
     h1{
-        @include font-creepster(4vw, 400, 4.5vw);
+        @include font-creepster(10vw, 400, 11vw);
+        width:100%;
+        text-align: center;
         letter-spacing: 0.3vw;
         float:left;
-        text-align: left;
         padding: 0;
-        margin:3.75vw 0 3.75vw 0;
+        margin:5vw 0 3.75vw 0;
         color: $color-theme-back;
-        text-shadow: -.167vw -.167vw 0 $color-theme-fore, .167vw -.167vw 0 $color-theme-fore, -.167vw  .167vw 0 $color-theme-fore, .167vw  .167vw 0 $color-theme-fore;
+        text-shadow: -.47vw -.47vw 0 $color-theme-fore, .47vw -.47vw 0 $color-theme-fore, -.47vw  .47vw 0 $color-theme-fore, .47vw  .47vw 0 $color-theme-fore;
+        
+        @media (min-width: 400px) {
+            width: unset;
+            text-align: left;
+            @include font-creepster(7vw, 400, 7.5vw);
+            letter-spacing: 0.3vw;
+            margin:5.75vw 0 4.75vw 0;
+            text-shadow: -.32vw -.32vw 0 $color-theme-fore, .32vw -.32vw 0 $color-theme-fore, -.32vw  .32vw 0 $color-theme-fore, .32vw  .32vw 0 $color-theme-fore;
+        }
+        @media (min-width: 576px) {
+            width: unset;
+            text-align: left;
+            @include font-creepster(5.5vw, 400, 6vw);
+            letter-spacing: 0.3vw;
+            margin:4.75vw 0 4.75vw 0;
+            text-shadow: -.28vw -.28vw 0 $color-theme-fore, .28vw -.28vw 0 $color-theme-fore, -.28vw  .28vw 0 $color-theme-fore, .28vw  .28vw 0 $color-theme-fore;
+        }
+        @media (min-width: 768px) {
+            width: unset;
+            text-align: left;
+            @include font-creepster(4vw, 400, 4.5vw);
+            letter-spacing: 0.3vw;
+            margin:3.75vw 0 3.75vw 0;
+            text-shadow: -.167vw -.167vw 0 $color-theme-fore, .167vw -.167vw 0 $color-theme-fore, -.167vw  .167vw 0 $color-theme-fore, .167vw  .167vw 0 $color-theme-fore;
+        }
     }
 
     .app-search-box{
-        float:right;
-        clear: none;
-        width: 27.333vw;
-        height: 4.083vw;
-        padding: 0;
-        margin:3.75vw 0 3.75vw 0;
+        float:left;
+        clear: left;
+        width: 100%;
+        height: 10vw;
+        padding: 0 0 0 2.5vw;
+        margin:0.75vw auto 6.75vw auto;
+
+        @media (min-width: 400px) {
+            float:right;
+            clear: none;
+            width: 43.5vw;
+            height: 6.5vw;
+            padding: 0;
+            margin:6vw 0 3.75vw 0;
+        }
+        @media (min-width: 576px) {
+            float:right;
+            clear: none;
+            width: 34.14vw;
+            height: 5.3vw;
+            padding: 0;
+            margin:5.35vw 0 2.75vw 0;
+        }
+        @media (min-width: 768px) {
+            float:right;
+            clear: none;
+            width: 27.333vw;
+            height: 4.083vw;
+            padding: 0;
+            margin:3.75vw 0 3.75vw 0;
+        }
     }
 
     .msg-srch-initial, .msg-srch-empty{
@@ -30,22 +95,87 @@
         clear: left;
         display: block;
         width: 100%;
-        height: calc(90vh - 17.333vw);
+        min-height: calc(90vh - 12.333vw);
         background-color: $color-primary-dark;
         border: solid 1px $color-primary-light;
-        border-radius: 1vw; 
+        border-radius: 1vw;
+        padding: 0 0 5vw 0;
+        margin: 0 0 4vw 0;
+        .random-list {
+            width: 100%;
+            display:flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            gap:9vw;
+            transform:scale(0.8);
+            margin: -42vw 0 0 0;
+
+            @media (min-width: 400px) {
+                width: 100%;
+                gap:2vw;
+                transform:scale(0.9);
+                margin: -4vw 0 0 0;
+            }
+            @media (min-width: 576px) {
+                width: 90%;
+                gap:3vw;   
+                transform:unset;
+                margin: 0 0 0 5%;             
+            }
+            @media (min-width: 768px) {
+                width: 100%;
+                gap:3vw; 
+                transform:unset;
+                margin: 0 0 0 0; 
+            }
+        }   
     }
 
     p{
-        @include font-poppins(2vw, 700, 2.2vw);
+        @include font-poppins(4.3vw, 700, 5vw);
         color: $color-secondary-light;
         text-align: center;
         padding: 0 2vw;
-        margin: calc(52vh - 17.333vw) 0 0 0;
+        margin: 5vw 0 3vw 0;
+
+        @media (min-width: 400px) {
+            @include font-poppins(3.5vw, 700, 4vw);
+            padding: 0 2vw;
+            margin: 5vw 0 1.083vw 0;
+        }
+        @media (min-width: 576px) {
+            @include font-poppins(2.5vw, 700, 2.8vw);
+            padding: 0 2vw;
+            margin: 5vw 0 1.5vw 0;
+        }
+        @media (min-width: 768px) {
+            @include font-poppins(2vw, 700, 2.2vw);
+            padding: 0 2vw;
+            margin: 5vw 0 1.083vw 0;
+        }
+
         &.descr{
-            @include font-poppins(1.5vw, 500, 2.2vw);
+            @include font-poppins(3.6vw, 500, 4.5vw);
             color: $color-secondary-dark;
-            margin: 1.083vw 0 0 0;
+            margin: 0 0 3.0vw 0;
+            
+            .br1 {display:unset;}
+            .br2 {display:none;}
+
+            @media (min-width: 400px) {
+                @include font-poppins(2.7vw, 500, 3.6vw);
+                margin: 0 0 2.43vw 0;
+                .br1 {display:none;}
+                .br2 {display:unset;}
+            }
+            @media (min-width: 576px) {
+                @include font-poppins(2vw, 500, 2.5vw);
+                margin: 0 0 1.783vw 0;
+            }
+            @media (min-width: 768px) {
+                @include font-poppins(1.5vw, 500, 2.2vw);
+                margin: 0 0 1.083vw 0;
+            }
         }
     }
 
@@ -56,5 +186,49 @@
         clear: both;
         margin: 0;
         width: 100%;
+
+        &.hidden{
+            display:none;
+        }
+    }
+
+    .load-more-bt{
+        width:100%;
+        height: auto;
+        display: block;
+        float: left;
+        clear: both;
+        margin: 3.43vw 0;
+        button{
+            display:block;
+            width: 47.583vw;
+            height: 11.68vw;
+            border-radius: 1.6vw; 
+            @include font-poppins(4.67vw, 700, 11.68vw);
+            margin: 0 auto 10vw auto;
+            border:none;
+            text-align: center;
+            color: $color-primary-dark;
+            background-color: $color-secondary-light;
+
+            @media (min-width: 400px) {
+                width: 25.583vw;
+                height: 6.28vw;
+                border-radius: 2.3vw; 
+                @include font-poppins(1.67vw, 700, 6.28vw);
+            }
+            @media (min-width: 576px) {
+                width: 18.583vw;
+                height: 4.56vw;
+                border-radius: 1.3vw; 
+                @include font-poppins(1.67vw, 700, 4.56vw);
+            }
+            @media (min-width: 768px) {
+                width: 13.583vw;
+                height: 3.333vw;
+                border-radius: 1vw; 
+                @include font-poppins(1.167vw, 700, 3.333vw);
+            }
+        }
     }
 }

@@ -1,19 +1,58 @@
 @import '../../../../styles/rickyandmorty-variables.scss';
 
 .containerFavorites{
-    width: 60vw;
+    width: 85vw;
     margin:0 auto;
     display: block;
 
+    @media (min-width: 400px) {
+        width: 85vw;
+    }
+    @media (min-width: 576px) {
+        width: 80vw;
+    }
+    @media (min-width: 768px) {
+        width: 60vw;
+    }
+    @media (min-width: 1200px) {
+        
+    }
+
     h1{
-        @include font-creepster(4vw, 400, 4.5vw);
+        @include font-creepster(10vw, 400, 11vw);
+        width:100%;
+        text-align: center;
         letter-spacing: 0.3vw;
         float:left;
-        text-align: left;
         padding: 0;
-        margin:3.75vw 0 3.75vw 0;
+        margin:5vw 0 3.75vw 0;
         color: $color-theme-back;
-        text-shadow: -.167vw -.167vw 0 $color-theme-fore, .167vw -.167vw 0 $color-theme-fore, -.167vw  .167vw 0 $color-theme-fore, .167vw  .167vw 0 $color-theme-fore;
+        text-shadow: -.47vw -.47vw 0 $color-theme-fore, .47vw -.47vw 0 $color-theme-fore, -.47vw  .47vw 0 $color-theme-fore, .47vw  .47vw 0 $color-theme-fore;
+        
+        @media (min-width: 400px) {
+            width: unset;
+            text-align: left;
+            @include font-creepster(7vw, 400, 7.5vw);
+            letter-spacing: 0.3vw;
+            margin:5.75vw 0 4.75vw 0;
+            text-shadow: -.32vw -.32vw 0 $color-theme-fore, .32vw -.32vw 0 $color-theme-fore, -.32vw  .32vw 0 $color-theme-fore, .32vw  .32vw 0 $color-theme-fore;
+        }
+        @media (min-width: 576px) {
+            width: unset;
+            text-align: left;
+            @include font-creepster(5.5vw, 400, 6vw);
+            letter-spacing: 0.3vw;
+            margin:4.75vw 0 4.75vw 0;
+            text-shadow: -.28vw -.28vw 0 $color-theme-fore, .28vw -.28vw 0 $color-theme-fore, -.28vw  .28vw 0 $color-theme-fore, .28vw  .28vw 0 $color-theme-fore;
+        }
+        @media (min-width: 768px) {
+            width: unset;
+            text-align: left;
+            @include font-creepster(4vw, 400, 4.5vw);
+            letter-spacing: 0.3vw;
+            margin:3.75vw 0 3.75vw 0;
+            text-shadow: -.167vw -.167vw 0 $color-theme-fore, .167vw -.167vw 0 $color-theme-fore, -.167vw  .167vw 0 $color-theme-fore, .167vw  .167vw 0 $color-theme-fore;
+        }
     }
 
     .msg-favs-empty {

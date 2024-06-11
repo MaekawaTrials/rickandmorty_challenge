@@ -39,6 +39,11 @@ Este projeto foi desenvolvido seguindo princípios de desenvolvimento moderno em
 3. **Persistência no LocalStorage:**
    - As operações de leitura e escrita no `localStorage` foram destaques devido à natureza do armazenamento chave-valor, garantindo acesso rápido aos dados persistidos.
 
+4. **Cache de Resultados de Busca:**
+   - Implementado um serviço de cache (`SearchCacheService`) para armazenar os resultados de busca e evitar chamadas repetidas à API. 
+   - O cache armazena os resultados e o total de páginas para cada consulta.
+
+
 ## Funcionalidades Implementadas
 
 1. **Busca de Personagens:**
@@ -57,6 +62,7 @@ Este projeto foi desenvolvido seguindo princípios de desenvolvimento moderno em
 4. **Armazenamento Local:**
    - Persiste a lista de favoritos no `localStorage` para manter os dados entre sessões.
 
+
 ## Estrutura do Projeto
 
 ### Estrutura de Diretórios
@@ -65,23 +71,79 @@ Este projeto foi desenvolvido seguindo princípios de desenvolvimento moderno em
 src/
 ├── app/
 │   ├── features/
-│   │   ├── home/
-│   │   │   ├── home-page/
-│   │   │   ├── search-box/
 │   │   ├── favorites/
 │   │   │   ├── favorites-page/
+│   │   │   │   ├── favorites-page.component.html
+│   │   │   │   ├── favorites-page.component.scss
+│   │   │   │   ├── favorites-page.component.spec.ts
+│   │   │   │   ├── favorites-page.component.ts
+│   │   ├── favorites.module.ts
+│   │   ├── home/
+│   │   │   ├── home-page/
+│   │   │   │   ├── home-page.component.html
+│   │   │   │   ├── home-page.component.scss
+│   │   │   │   ├── home-page.component.spec.ts
+│   │   │   │   ├── home-page.component.ts
+│   │   │   ├── random-characters/
+│   │   │   │   ├── random-characters.component.html
+│   │   │   │   ├── random-characters.component.scss
+│   │   │   │   ├── random-characters.component.spec.ts
+│   │   │   │   ├── random-characters.component.ts
+│   │   │   ├── search-box/
+│   │   │   │   ├── search-box.component.html
+│   │   │   │   ├── search-box.component.scss
+│   │   │   │   ├── search-box.component.spec.ts
+│   │   │   │   ├── search-box.component.ts
+│   │   ├── home.module.ts
 │   ├── shared/
-│   │   ├── menu-bar/
 │   │   ├── character-card/
+│   │   │   ├── character-card.component.html
+│   │   │   ├── character-card.component.scss
+│   │   │   ├── character-card.component.spec.ts
+│   │   │   ├── character-card.component.ts
+│   │   ├── loading/
+│   │   │   ├── loading.component.html
+│   │   │   ├── loading.component.scss
+│   │   │   ├── loading.component.spec.ts
+│   │   │   ├── loading.component.ts
+│   │   ├── menu-bar/
+│   │   │   ├── menu-bar.component.html
+│   │   │   ├── menu-bar.component.scss
+│   │   │   ├── menu-bar.component.spec.ts
+│   │   │   ├── menu-bar.component.ts
+│   │   ├── shared.module.ts
 │   ├── state/
-│   │   ├── actions/
-│   │   ├── reducers/
-│   │   ├── effects/
-│   │   ├── selectors/
+│   │   ├── app.state.ts
+│   │   ├── character.model.ts
+│   │   ├── favorites.actions.ts
+│   │   ├── favorites.effects.ts
+│   │   ├── favorites.reducer.ts
+│   │   ├── index.ts
+│   │   ├── search.actions.ts
+│   │   ├── search-cache.service.ts
+│   │   ├── search.effects.ts
+│   │   ├── search.reducer.ts
+│   │   ├── search.selectors.ts
+│   │   ├── state.actions.spec.ts
+│   │   ├── state.module.ts
+│   │   ├── state.reducer.spec.ts 
+│   ├── app-routing.module.ts
+│   ├── app.component.html
+│   ├── app.component.scss
+│   ├── app.component.spec.ts
 │   ├── app.component.ts
 │   ├── app.module.ts
 ├── assets/
-├── environments/
+├── styles/
+│   ├── rickyandmorty-variables.scss
+├── index.html
+├── main.ts
+├── styles.scss
+├── test.ts
+angular.json
+package-lock.json
+README.md
+
 ```
 
 ### Componentes e Páginas

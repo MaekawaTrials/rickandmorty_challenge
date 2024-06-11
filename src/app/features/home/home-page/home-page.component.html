@@ -1,10 +1,13 @@
 <app-menu-bar></app-menu-bar>
 <div class="containerHome">
   <h1>INÍCIO</h1>
-  <app-search-box (search)="onSearch($event)" class="app-search-box" ></app-search-box>
+  <app-search-box (search)="onSearch($event)" class="app-search-box" #searchBox></app-search-box>
+  <div *ngIf="isLoading$ | async">
+    <app-loading></app-loading>
+  </div>
   <section class="card-list">
-    <ng-container *ngIf="searchResults$ | async as characters; else initialMsg">
-      <ng-container *ngIf="characters.length > 0; else emptyMsg">
+    <ng-container *ngIf="(searchResults$ | async) as characters">
+      <ng-container *ngIf="(characters.length > 0); else noResults">
         <ng-container *ngIf="favorites$ | async as favorites">
           <app-character-card
             class="app-character-card"
@@ -13,19 +16,20 @@
             [isFavorite]="isFavorite(character, favorites)"
           ></app-character-card>
         </ng-container>
+        <div class="load-more-bt" *ngIf="(hasMoreCharacters$ | async)">
+          <button (click)="onLoadMore()">Carregar mais...</button>
+        </div>
       </ng-container>
     </ng-container>
   </section>
-  <ng-template #initialMsg>
-    <div class="msg-srch-initial">
-      <p>Vamos começar?</p>
-      <p class="descr">Pesquise pelo nome de um personagem para começar.</p>
-    </div>
-  </ng-template>
-  <ng-template #emptyMsg>
-    <div class="msg-srch-empty">
-      <p>Nada foi encontrado.</p>
-      <p class="descr">Tente realizar uma nova busca.</p>
+  <ng-template #noResults>
+    <div *ngIf="!(isLoading$ | async)">
+      <div class="msg-srch-empty">
+        <p>Nada foi encontrado.</p>
+        <p class="descr">Não existe um personagem chamado <b>"{{ currentSearchTerm$ | async }}"</b>.</p>
+        <p class="descr">Tente realizar uma nova busca para encontrar <br class="br2"> outros personagens como <br class="br1">esses exemplos abaixo:</p>
+        <app-random-characters [numberOfCharacters]="4" class="random-list"></app-random-characters>
+      </div>
     </div>
   </ng-template>
 </div>

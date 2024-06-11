@@ -1,4 +1,4 @@
 <div class="form-field">
   <label for="input-pesquisar">Pesquisar</label>
-  <input id="input-pesquisar" #searchInput type="text" (input)="onSearch($event)">
+  <input id="input-pesquisar" [(ngModel)]="searchTerm" #searchInput type="text" (input)="onSearch($event)">
 </div>

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs/operators';
-import { addFavorite, removeFavorite, setFavorites, loadFavoritesFromLocalStorage } from './favorites.actions';
+import { of } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Character } from './character.model';
-import { AppState } from './index';
+import { AppState } from './app.state';
+import { addFavorite, removeFavorite, loadFavoritesFromLocalStorage, setFavorites } from './favorites.actions';
 
 @Injectable()
 export class FavoritesEffects {
@@ -13,25 +14,39 @@ export class FavoritesEffects {
   loadFavorites$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadFavoritesFromLocalStorage),
-      tap(() => {
-        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-        if (favorites.length > 0) {
-          this.store.dispatch(setFavorites({ favorites }));
-        }
-      })
-    ),
-    { dispatch: false }
+      map(() => {
+        const favorites = localStorage.getItem('favorites');
+        return favorites ? JSON.parse(favorites) : [];
+      }),
+      map((favorites: Character[]) => setFavorites({ favorites }))
+    )
   );
 
-  saveFavorites$ = createEffect(() =>
+  addFavorite$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(addFavorite, removeFavorite),
-      tap(() => {
-        this.store.select('favorites').subscribe((favorites: Character[]) => {
-          localStorage.setItem('favorites', JSON.stringify(favorites));
-        });
-      })
-    ),
-    { dispatch: false }
+      ofType(addFavorite),
+      switchMap(() =>
+        this.store.select(state => state.favorites.favorites).pipe(
+          map(favorites => {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            return { type: '[Favorites] Add Favorite Success' };
+          })
+        )
+      )
+    )
+  );
+
+  removeFavorite$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(removeFavorite),
+      switchMap(() =>
+        this.store.select(state => state.favorites.favorites).pipe(
+          map(favorites => {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            return { type: '[Favorites] Remove Favorite Success' };
+          })
+        )
+      )
+    )
   );
 }
