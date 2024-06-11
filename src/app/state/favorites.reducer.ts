@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Character } from './character.model';
-import { addFavorite, removeFavorite } from './favorites.actions';
+import { addFavorite, removeFavorite, setFavorites } from './favorites.actions';
 
 export interface FavoritesState {
   favorites: Character[];
@@ -19,5 +19,9 @@ export const favoritesReducer = createReducer(
   on(removeFavorite, (state, { id }) => ({
     ...state,
     favorites: state.favorites.filter(character => character.id !== id)
+  })),
+  on(setFavorites, (state, { favorites }) => ({
+    ...state,
+    favorites
   }))
 );

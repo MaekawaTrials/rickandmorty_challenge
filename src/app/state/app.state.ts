@@ -1,12 +1,8 @@
 import { Character } from './character.model';
+import { FavoritesState } from './favorites.reducer';
+import { SearchState } from './search.reducer';
 
 export interface AppState {
   search: SearchState;
-  // Adicione outros estados aqui, se necessário
-}
-
-export interface SearchState {
-  characters: Character[];
-  loading: boolean;
-  error: any;
+  favorites: FavoritesState;
 }

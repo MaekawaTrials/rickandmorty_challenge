@@ -1,45 +1,52 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { HttpClient } from '@angular/common/http';
-import { catchError, map, switchMap, of } from 'rxjs';
-import { searchCharacters, searchCharactersSuccess, searchCharactersFailure } from './search.actions';
+import { of } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Character } from './character.model';
 import { AppState } from './app.state';
-import { Observable } from 'rxjs';
+import { addFavorite, removeFavorite, loadFavoritesFromLocalStorage, setFavorites } from './favorites.actions';
 
 @Injectable()
-export class SearchEffects {
-  constructor(
-    private actions$: Actions,
-    private http: HttpClient,
-    private store: Store<AppState>
-  ) {}
+export class FavoritesEffects {
+  constructor(private actions$: Actions, private store: Store<AppState>) {}
 
-  searchCharacters$ = createEffect(() =>
+  loadFavorites$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(searchCharacters),
-      switchMap(({ query }) => this.fetchAllCharacters(query).pipe(
-        map(characters => searchCharactersSuccess({ characters })),
-        catchError(error => of(searchCharactersFailure({ error })))
-      ))
+      ofType(loadFavoritesFromLocalStorage),
+      map(() => {
+        const favorites = localStorage.getItem('favorites');
+        return favorites ? JSON.parse(favorites) : [];
+      }),
+      map((favorites: Character[]) => setFavorites({ favorites }))
     )
   );
 
-  fetchAllCharacters(query: string, page: number = 1, accumulatedCharacters: Character[] = []): Observable<Character[]> {
-    const url = query.length === 0
-      ? `https://rickandmortyapi.com/api/character/?page=${page}`
-      : `https://rickandmortyapi.com/api/character/?name=${query}&page=${page}`;
+  addFavorite$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addFavorite),
+      switchMap(() =>
+        this.store.select(state => state.favorites.favorites).pipe(
+          map(favorites => {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            return { type: '[Favorites] Add Favorite Success' };
+          })
+        )
+      )
+    )
+  );
 
-    return this.http.get<{ info: { next: string }, results: Character[] }>(url).pipe(
-      switchMap(response => {
-        const newCharacters = accumulatedCharacters.concat(response.results);
-        if (response.info.next) {
-          return this.fetchAllCharacters(query, page + 1, newCharacters);
-        } else {
-          return of(newCharacters);
-        }
-      })
-    );
-  }
+  removeFavorite$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(removeFavorite),
+      switchMap(() =>
+        this.store.select(state => state.favorites.favorites).pipe(
+          map(favorites => {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            return { type: '[Favorites] Remove Favorite Success' };
+          })
+        )
+      )
+    )
+  );
 }

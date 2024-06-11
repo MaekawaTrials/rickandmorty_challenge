@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchEffects } from './state/search.effects';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchCacheService } from './state/search-cache.service';
+import { FavoritesEffects } from './state/favorites.effects';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { SearchCacheService } from './state/search-cache.service';
     FavoritesModule,
     SharedModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([SearchEffects]),
+    EffectsModule.forRoot([SearchEffects, FavoritesEffects]),
     HttpClientModule,
     MatIconModule
   ],
